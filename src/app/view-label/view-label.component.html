@@ -1,0 +1,36 @@
+<h1>Cloud Labeling Tool</h1>
+<h3>Label the cloud type and region. Press "s"/"Esc" to save/cancel current selection. </h3>
+<button (click)="resetPolygon()">Reset Polygon</button>
+<!-- Add this checkbox section -->
+<div class="checkbox-container">
+  <span class="checkbox-label">Cloud types:</span>
+  <label class="checkbox-item">
+    <input type="checkbox" [(ngModel)]="cirrusChecked" (change)="onCheckboxChange()">
+    <span>Cirrus</span>
+  </label>
+  <label class="checkbox-item">
+    <input type="checkbox" [(ngModel)]="stratusChecked" (change)="onCheckboxChange()">
+    <span>Stratus</span>
+  </label>
+  <label class="checkbox-item">
+    <input type="checkbox" [(ngModel)]="cumulusChecked" (change)="onCheckboxChange()">
+    <span>Cumulus</span>
+  </label>
+</div>
+
+<div *ngIf="clickedCoordinates">
+  <p>Latitude: {{ clickedCoordinates.latitude | number:'1.4-4' }}</p>
+  <p>Longitude: {{ clickedCoordinates.longitude | number:'1.4-4' }}</p>
+</div>
+<hr>
+<div *ngFor="let item of savedPolygons; let i = index">
+  <p>User Label {{i}}: Circus = {{savedCirrus[i]}}, Stratus = {{savedStratus[i]}}, Cumulus = {{savedCumulus[i]}}</p>
+</div>
+<!-- <div #cesiumContainer style="width: 100%; height: 100%;"></div> -->
+<div class="cesium-container">
+  <div #cesiumContainer class="cesium-viewer"></div>
+  <div class="zoom-controls">
+    <button (click)="zoomIn()" class="zoom-button">+</button>
+    <button (click)="zoomOut()" class="zoom-button">-</button>
+  </div>
+</div>

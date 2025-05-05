@@ -1,0 +1,11 @@
+<h2>Raw Cloud Data Visualization</h2>
+<div>
+    <button (click)="onClick()">Show Labels/Classification</button>
+</div>
+<div class="animation-controls">
+    <button (click)="startAnimation()" [disabled]="isPlaying || imageSequence.length === 0">Play</button>
+    <button (click)="stopAnimation()" [disabled]="!isPlaying">Stop</button>
+    <input type="range" min="1" max="60" [(ngModel)]="frameRate" (change)="setAnimationSpeed(frameRate)">
+    <span>Frame: {{currentFrameIndex + 1}}/{{imageSequence.length}}</span>
+  </div>
+<div #cesiumContainer style="width: 100%; height: 100%;"></div>

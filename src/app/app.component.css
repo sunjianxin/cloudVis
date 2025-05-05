@@ -1,0 +1,43 @@
+main {
+  width: 90%;
+  max-width: 100rem;
+  margin: 2.5rem auto;
+  /* display: grid;
+  /* grid-template-rows: 100px 100px 100px 100px;
+  grid-template-columns: 100px 100px 100px 100px; */
+  grid-auto-flow: colume;
+  gap: 2rem;
+}
+
+#users {
+  /* width: 200px; */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 0.5rem;
+  overflow: auto;
+}
+
+#fallback {
+  font-weight: bold;
+  font-size: 1.15rem;
+  margin: 0;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  main {
+    margin: 4rem auto;
+    /* grid-template-rows: 1fr 5fr; */
+  }
+
+  /* #users {
+    flex-direction: row;
+  } */
+
+  #fallback {
+    font-size: 1.5rem;
+    text-align: left;
+  }
+}

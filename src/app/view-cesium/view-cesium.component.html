@@ -1,0 +1,170 @@
+<h2>Raw Cloud Data Visualization</h2>
+<p>Band Selection for R, G, and B</p>
+<div style="display: flex; align-items: center; gap: 10px;">
+    <label for="red">R:</label>
+    <select [(ngModel)]="selectedNumber_r" (change)="onNumberChange()">
+        <option *ngFor="let num of numbers" [value]="num">{{ num }}</option>
+    </select>
+    <label for="red">G:</label>
+    <select [(ngModel)]="selectedNumber_g" (change)="onNumberChange()">
+        <option *ngFor="let num of numbers" [value]="num">{{ num }}</option>
+    </select>
+    <label for="red">B:</label>
+    <select [(ngModel)]="selectedNumber_b" (change)="onNumberChange()">
+        <option *ngFor="let num of numbers" [value]="num">{{ num }}</option>
+    </select>
+</div>
+<p>Selected Channel: R={{ selectedNumber_r }} Hz; G={{ selectedNumber_g }} Hz; B={{ selectedNumber_b }} Hz</p>
+<hr>
+<h2>Classification Visualization</h2>
+<div>
+    <button (click)="onClick()">Show Labels/Classification</button>
+</div>
+<!-- <div class="wrapper">
+    <div class="group">
+      <label for="number1">Number 1:</label>
+      <input type="number" [(ngModel)]="number1" id="number1" min="0" max="255" (input)="validateInput('number1')" />
+  
+      <label for="number2">Number 2:</label>
+      <input type="number" [(ngModel)]="number2" id="number2" min="0" max="255" (input)="validateInput('number2')" />
+  
+      <label for="number3">Number 3:</label>
+      <input type="number" [(ngModel)]="number3" id="number3" min="0" max="255" (input)="validateInput('number3')" />
+    </div>
+    <p>Entered Numbers: {{ number1 }}, {{ number2 }}, {{ number3 }}</p>
+</div> -->
+<div class="wrapper">
+    <!-- <div class="group">
+        <p>Label 0</p>
+        <label for="l0r">R:</label>
+        <input type="number" [(ngModel)]="l0r" id="l0r" min="0" max="255" (input)="validateInput('l0r')"/>
+        <label for="l0g">G:</label>
+        <input type="number" [(ngModel)]="l0g" id="l0g" min="0" max="255" (input)="validateInput('l0g')"/>
+        <label for="l0b">B:</label>
+        <input type="number" [(ngModel)]="l0b" id="l0b" min="0" max="255" (input)="validateInput('l0b')"/>
+        <label for="l0a">A:</label>
+        <input type="number" [(ngModel)]="l0a" id="l0a" min="0" max="255" (input)="validateInput('l0a')"/>
+        <p>Entered Numbers: {{ l0r }}, {{ l0g }}, {{ l0b }}, {{ l0a }}</p>
+    </div> -->
+    <div class="group">
+        <label><input type="checkbox" [(ngModel)]="isCheckedl1">Label 1</label>
+        <label for="l1r">R:</label>
+        <input type="number" [(ngModel)]="l1r" id="l1r" min="0" max="255" (input)="validateInput('l1r')"/>
+        <label for="l1g">G:</label>
+        <input type="number" [(ngModel)]="l1g" id="l1g" min="0" max="255" (input)="validateInput('l1g')"/>
+        <label for="l1b">B:</label>
+        <input type="number" [(ngModel)]="l1b" id="l1b" min="0" max="255" (input)="validateInput('l1b')"/>
+        <label for="l1a">A:</label>
+        <input type="number" [(ngModel)]="l1a" id="l1a" min="0" max="255" (input)="validateInput('l1a')"/>
+        <p>{{ l1r }}, {{ l1g }}, {{ l1b }}, {{ l1a }}</p>
+    </div>
+    <div class="group">
+        <label><input type="checkbox" [(ngModel)]="isCheckedl2">Label 2</label>
+        <label for="l2r">R:</label>
+        <input type="number" [(ngModel)]="l2r" id="l2r" min="0" max="255" (input)="validateInput('l2r')"/>
+        <label for="l2g">G:</label>
+        <input type="number" [(ngModel)]="l2g" id="l2g" min="0" max="255" (input)="validateInput('l2g')"/>
+        <label for="l2b">B:</label>
+        <input type="number" [(ngModel)]="l2b" id="l2b" min="0" max="255" (input)="validateInput('l2b')"/>
+        <label for="l2a">A:</label>
+        <input type="number" [(ngModel)]="l2a" id="l2a" min="0" max="255" (input)="validateInput('l2a')"/>
+        <p>{{ l2r }}, {{ l2g }}, {{ l2b }}, {{ l2a }}</p>
+    </div>
+    <div class="group">
+        <label><input type="checkbox" [(ngModel)]="isCheckedl3">Label 3</label>
+        <label for="l3r">R:</label>
+        <input type="number" [(ngModel)]="l3r" id="l3r" min="0" max="255" (input)="validateInput('l3r')"/>
+        <label for="l3g">G:</label>
+        <input type="number" [(ngModel)]="l3g" id="l3g" min="0" max="255" (input)="validateInput('l3g')"/>
+        <label for="l3b">B:</label>
+        <input type="number" [(ngModel)]="l3b" id="l3b" min="0" max="255" (input)="validateInput('l3b')"/>
+        <label for="l3a">A:</label>
+        <input type="number" [(ngModel)]="l3a" id="l3a" min="0" max="255" (input)="validateInput('l3a')"/>
+        <p>{{ l3r }}, {{ l3g }}, {{ l3b }}, {{ l3a }}</p>
+    </div>
+    <div class="group">
+        <label><input type="checkbox" [(ngModel)]="isCheckedl4">Label 4</label>
+        <label for="l4r">R:</label>
+        <input type="number" [(ngModel)]="l4r" id="l4r" min="0" max="255" (input)="validateInput('l4r')"/>
+        <label for="l4g">G:</label>
+        <input type="number" [(ngModel)]="l4g" id="l4g" min="0" max="255" (input)="validateInput('l4g')"/>
+        <label for="l4b">B:</label>
+        <input type="number" [(ngModel)]="l4b" id="l4b" min="0" max="255" (input)="validateInput('l4b')"/>
+        <label for="l4a">A:</label>
+        <input type="number" [(ngModel)]="l4a" id="l4a" min="0" max="255" (input)="validateInput('l4a')"/>
+        <p>{{ l4r }}, {{ l4g }}, {{ l4b }}, {{ l4a }}</p>
+    </div>
+    <div class="group">
+        <label><input type="checkbox" [(ngModel)]="isCheckedl5">Label 5</label>
+        <label for="l5r">R:</label>
+        <input type="number" [(ngModel)]="l5r" id="l5r" min="0" max="255" (input)="validateInput('l5r')"/>
+        <label for="l5g">G:</label>
+        <input type="number" [(ngModel)]="l5g" id="l5g" min="0" max="255" (input)="validateInput('l5g')"/>
+        <label for="l5b">B:</label>
+        <input type="number" [(ngModel)]="l5b" id="l5b" min="0" max="255" (input)="validateInput('l5b')"/>
+        <label for="l5a">A:</label>
+        <input type="number" [(ngModel)]="l5a" id="l5a" min="0" max="255" (input)="validateInput('l5a')"/>
+        <p>{{ l5r }}, {{ l5g }}, {{ l5b }}, {{ l5a }}</p>
+    </div>
+    <div class="group">
+        <label><input type="checkbox" [(ngModel)]="isCheckedl6">Label 6</label>
+        <label for="l6r">R:</label>
+        <input type="number" [(ngModel)]="l6r" id="l6r" min="0" max="255" (input)="validateInput('l6r')"/>
+        <label for="l6g">G:</label>
+        <input type="number" [(ngModel)]="l6g" id="l6g" min="0" max="255" (input)="validateInput('l6g')"/>
+        <label for="l6b">B:</label>
+        <input type="number" [(ngModel)]="l6b" id="l6b" min="0" max="255" (input)="validateInput('l6b')"/>
+        <label for="l6a">A:</label>
+        <input type="number" [(ngModel)]="l6a" id="l6a" min="0" max="255" (input)="validateInput('l6a')"/>
+        <p>{{ l6r }}, {{ l6g }}, {{ l6b }}, {{ l6a }}</p>
+    </div>
+    <div class="group">
+        <label><input type="checkbox" [(ngModel)]="isCheckedl7">Label 7</label>
+        <label for="l7r">R:</label>
+        <input type="number" [(ngModel)]="l7r" id="l7r" min="0" max="255" (input)="validateInput('l7r')"/>
+        <label for="l7g">G:</label>
+        <input type="number" [(ngModel)]="l7g" id="l7g" min="0" max="255" (input)="validateInput('l7g')"/>
+        <label for="l7b">B:</label>
+        <input type="number" [(ngModel)]="l7b" id="l7b" min="0" max="255" (input)="validateInput('l7b')"/>
+        <label for="l7a">A:</label>
+        <input type="number" [(ngModel)]="l7a" id="l7a" min="0" max="255" (input)="validateInput('l7a')"/>
+        <p>{{ l7r }}, {{ l7g }}, {{ l7b }}, {{ l7a }}</p>
+    </div>
+    <div class="group">
+        <label><input type="checkbox" [(ngModel)]="isCheckedl8">Label 8</label>
+        <label for="l8r">R:</label>
+        <input type="number" [(ngModel)]="l8r" id="l8r" min="0" max="255" (input)="validateInput('l8r')"/>
+        <label for="l8g">G:</label>
+        <input type="number" [(ngModel)]="l8g" id="l8g" min="0" max="255" (input)="validateInput('l8g')"/>
+        <label for="l8b">B:</label>
+        <input type="number" [(ngModel)]="l8b" id="l8b" min="0" max="255" (input)="validateInput('l8b')"/>
+        <label for="l8a">A:</label>
+        <input type="number" [(ngModel)]="l8a" id="l8a" min="0" max="255" (input)="validateInput('l8a')"/>
+        <p>{{ l8r }}, {{ l8g }}, {{ l8b }}, {{ l8a }}</p>
+    </div>
+    <div class="group">
+        <label><input type="checkbox" [(ngModel)]="isCheckedl9">Label 9</label>
+        <label for="l9r">R:</label>
+        <input type="number" [(ngModel)]="l9r" id="l9r" min="0" max="255" (input)="validateInput('l9r')"/>
+        <label for="l9g">G:</label>
+        <input type="number" [(ngModel)]="l9g" id="l9g" min="0" max="255" (input)="validateInput('l9g')"/>
+        <label for="l9b">B:</label>
+        <input type="number" [(ngModel)]="l9b" id="l9b" min="0" max="255" (input)="validateInput('l9b')"/>
+        <label for="l9a">A:</label>
+        <input type="number" [(ngModel)]="l9a" id="l9a" min="0" max="255" (input)="validateInput('l9a')"/>
+        <p>{{ l9r }}, {{ l9g }}, {{ l9b }}, {{ l9a }}</p>
+    </div>
+    <div class="group">
+        <label><input type="checkbox" [(ngModel)]="isCheckedl10">Label 10</label>
+        <label for="l10r">R:</label>
+        <input type="number" [(ngModel)]="l10r" id="l10r" min="0" max="255" (input)="validateInput('l10r')"/>
+        <label for="l10g">G:</label>
+        <input type="number" [(ngModel)]="l10g" id="l10g" min="0" max="255" (input)="validateInput('l10g')"/>
+        <label for="l10b">B:</label>
+        <input type="number" [(ngModel)]="l10b" id="l10b" min="0" max="255" (input)="validateInput('l10b')"/>
+        <label for="l10a">A:</label>
+        <input type="number" [(ngModel)]="l10a" id="l10a" min="0" max="255" (input)="validateInput('l10a')"/>
+        <p>{{ l10r }}, {{ l10g }}, {{ l10b }}, {{ l10a }}, {{ isCheckedl10 }}</p>
+    </div>
+</div>
+<div #cesiumContainer style="width: 100%; height: 100%;"></div>

@@ -1,0 +1,39 @@
+<app-header></app-header>
+
+<main>
+  <!-- <ul id="users">
+    <li>
+      <app-maps [id]="'DECK GL'" [avatar]="'deckgl.png'" (select)="onSelectMap($event)"></app-maps>
+    </li>
+    <li>
+      <app-maps [id]="'GOOGLE MAP'" [avatar]="'googlemap.png'" (select)="onSelectMap($event)"></app-maps>
+    </li>
+  </ul> -->
+  <div id="users">
+    <app-maps [id]="'DECK GL'" [avatar]="'deckgl.png'" (select)="onSelectMap($event)"></app-maps>
+    <app-maps [id]="'GOOGLE MAP'" [avatar]="'googlemap.png'" (select)="onSelectMap($event)"></app-maps>
+    <app-maps [id]="'CESIUM Visualization Tool'" [avatar]="'cesium.png'" (select)="onSelectMap($event)"></app-maps>
+    <app-maps [id]="'CESIUM Lable Tool'" [avatar]="'cesium.png'" (select)="onSelectMap($event)"></app-maps>
+    <app-maps [id]="'CESIUM Animation'" [avatar]="'cesium.png'" (select)="onSelectMap($event)"></app-maps>
+  </div>
+
+  <div id="mapss">
+    <!-- <app-view [name]="onSelectMap()"></app-view> -->
+    @if (selectedMapId == 'DECK GL') {
+      <app-view-deckgl></app-view-deckgl>
+    }
+    @if (selectedMapId == 'GOOGLE MAP') {
+      <app-view-googlemap></app-view-googlemap>
+    }
+    @if (selectedMapId == 'CESIUM Visualization Tool') {
+      <app-view-cesium></app-view-cesium>
+    }
+    @if (selectedMapId == 'CESIUM Lable Tool') {
+      <app-view-label></app-view-label>
+    }
+    @if (selectedMapId == 'CESIUM Animation') {
+      <app-view-animation></app-view-animation>
+    }
+  </div>
+
+</main>
